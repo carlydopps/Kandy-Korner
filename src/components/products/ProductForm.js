@@ -7,7 +7,7 @@ export const ProductForm = () => {
     const [product, update] = useState({
         name: "",
         price: "",
-        typeId: 1
+        typeId: 0
     })
 
    const navigate = useNavigate()
@@ -30,7 +30,7 @@ export const ProductForm = () => {
         const productToSendToAPI = {
             name: product.name,
             price: product.price,
-            typeId: product.typeId
+            productTypesId: product.productTypesId
         }
 
         // TODO: Perform the fetch() to POST the object to the API
