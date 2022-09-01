@@ -2,13 +2,26 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import "./Products.css"
 
-export const ProductList = () => {
+export const ProductList = ({searchTermState}) => {
     const [products, setProducts] = useState([])
     const [productTypes, setProductTypes] = useState([])
     const [filteredProducts, setFiltered] = useState([])
     const [expensiveOnly, updateExpensiveOnly] = useState(false)
 
+    const localKandyUser = localStorage.getItem("kandy_user")
+    const kandyUserObject = JSON.parse(localKandyUser)
+
     const navigate = useNavigate()
+
+    useEffect(
+        () => {
+            const searchProducts = products.filter(product => {
+                return product.name.toLowerCase().startsWith(searchTermState.toLowerCase())
+            })
+            setFiltered(searchProducts)
+        },
+        [searchTermState]
+    )
 
     useEffect(
         () => {
@@ -62,7 +75,7 @@ export const ProductList = () => {
                         return <section className="product" key={`product--${product.id}`}>
                             <header>{product.name}</header>
                             <ul>
-                                <li>${product.price}</li>
+                                <li>{product.price.toLocaleString(`en-US`, {style: 'currency', currency: 'USD'})}</li>
                                 <li>{product.productTypes.name}</li>
                             </ul>
                         </section>
