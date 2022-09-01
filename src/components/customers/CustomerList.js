@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Customer } from "./Customer"
 import "./Customers.css"
 
 export const CustomerList = () => {
@@ -20,14 +21,10 @@ export const CustomerList = () => {
 
         <article className="customers">
             {
-                customers.map(
-                    (customer) => {
-                        return <section className="customer" key={`customer--${customer.id}`}>
-                                <header>{customer.user.name}</header>
-                                <div>Email: {customer.user.email}</div>
-                            </section>
-                    }
-                )   
+                customers.map(customer => <Customer key={`customer--${customer.id}`}
+                id={customer.id} 
+                name={customer.user.name}
+                email={customer.user.email} />)   
             }
         </article>
     </>
