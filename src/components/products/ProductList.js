@@ -4,10 +4,8 @@ import "./Products.css"
 
 export const ProductList = ({searchTermState}) => {
     const [products, setProducts] = useState([])
-    const [productTypes, setProductTypes] = useState([])
     const [filteredProducts, setFiltered] = useState([])
     const [expensiveOnly, updateExpensiveOnly] = useState(false)
-
     const localKandyUser = localStorage.getItem("kandy_user")
     const kandyUserObject = JSON.parse(localKandyUser)
 
@@ -30,12 +28,6 @@ export const ProductList = ({searchTermState}) => {
                 .then((productArray) => {
                     setProducts(productArray)
                 })
-
-            fetch(`http://localhost:8088/productTypes`)
-            .then(res => res.json())
-            .then((productTypeArray) => {
-                setProductTypes(productTypeArray)
-            })
         },
         [] // When this array is empty, you are observing initial component state
     )

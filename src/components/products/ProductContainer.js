@@ -6,7 +6,7 @@ export const ProductContainer = () => {
     const [searchTerms, setSearchTerms] = useState("")
 
     return <>
-        <ProductSearch setterFunction={setSearchTerms} />
+        <ProductSearch setterFunction={setSearchTerms}  />
 		<ProductMatch searchTermState={searchTerms}/> 
     </>
 }
