@@ -7,10 +7,13 @@ export const CustomerNav = () => {
     return (
         <ul className="navbar">
             <li className="navbar__item active">
+                <Link className="navbar__link" to="/locations">Locations</Link>
+            </li>
+            <li className="navbar__item active">
                 <Link className="navbar__link" to="/products">Product Search</Link>                
             </li>
             <li className="navbar__item active">
-                <Link className="navbar__link" to="/locations">Locations</Link>
+                <Link className="navbar__link" to="/orders">My Orders</Link>
             </li>
             <li className="navbar__item navbar__logout">
                 <Link className="navbar__link" to="" onClick={() => {
