@@ -50,7 +50,8 @@ export const CustomerDetails = () => {
                     onChange={
                         (event) => {
                             const copy = {...customer}
-                            copy.loyaltyNumber = event.target.value
+                            copy.loyaltyNumber = parseInt(event.target.value)
+                            delete copy.user
                             updateCustomer(copy)
                         }
                     }
