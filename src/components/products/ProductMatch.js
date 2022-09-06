@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 import "./Products.css"
 
 export const ProductMatch = ({searchTermState}) => {
@@ -41,6 +42,7 @@ export const ProductMatch = ({searchTermState}) => {
                         <div className="product">
                             <header>{product.name}</header>
                             <footer>${product.price}</footer>
+                            {/* <Link to={`/inventory`}>Show me where</Link> */}
                         </div>
                     </article>
                 }
