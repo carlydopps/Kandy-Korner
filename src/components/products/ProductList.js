@@ -6,8 +6,6 @@ export const ProductList = ({searchTermState}) => {
     const [products, setProducts] = useState([])
     const [filteredProducts, setFiltered] = useState([])
     const [expensiveOnly, updateExpensiveOnly] = useState(false)
-    const localKandyUser = localStorage.getItem("kandy_user")
-    const kandyUserObject = JSON.parse(localKandyUser)
 
     const navigate = useNavigate()
 
