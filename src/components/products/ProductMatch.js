@@ -33,9 +33,7 @@ export const ProductMatch = ({searchTermState}) => {
         () => {
             fetch(`http://localhost:8088/products`)
                 .then(res => res.json())
-                .then((productArray) => {
-                    setProducts(productArray)
-                })
+                .then(productArray => setProducts(productArray))
         },
         []
     )

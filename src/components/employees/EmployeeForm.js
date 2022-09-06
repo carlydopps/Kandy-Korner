@@ -19,9 +19,7 @@ export const EmployeeForm = () => {
         () => {
             fetch(`http://localhost:8088/locations`)
                 .then(res => res.json())
-                .then((locationsArray) => {
-                    setLocations(locationsArray)
-                })
+                .then(locationsArray => setLocations(locationsArray))
         },
         []
     )
@@ -67,9 +65,7 @@ export const EmployeeForm = () => {
             },
             body: JSON.stringify(employeeToSendToAPI)
         })
-        .then(() => {
-            navigate("/employees")
-        })
+        .then(() => navigate("/employees"))
         
     }
 

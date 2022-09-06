@@ -8,9 +8,7 @@ export const LocationList = () => {
         () => {
             fetch(`http://localhost:8088/locations`)
                 .then(res => res.json())
-                .then((locationArray) => {
-                    setLocations(locationArray)
-                })
+                .then(locationArray => setLocations(locationArray))
         },
         [] // When this array is empty, you are observing initial component state
     )

@@ -33,9 +33,7 @@ export const CustomerDetails = () => {
             body: JSON.stringify(customer)
         })
             .then(res => res.json())
-            .then(() => {
-                navigate("/customers")
-            })
+            .then(() => navigate("/customers"))
     }
 
     return <>

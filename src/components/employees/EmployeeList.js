@@ -11,12 +11,30 @@ export const EmployeeList = () => {
         () => {
             fetch(`http://localhost:8088/employees?_expand=locations&_expand=user`)
                 .then(res => res.json())
-                .then((employeeArray) => {
-                    setEmployees(employeeArray)
-                })
+                .then(employeeArray => setEmployees(employeeArray))
         },
         []
     )
+
+    const getAllEmployees = () => {
+        fetch(`http://localhost:8088/employees?_expand=locations&_expand=user`)
+            .then(res => res.json())
+            .then(employeeArray => setEmployees(employeeArray))
+    }
+
+    const fireButton = (employeeObj) => {
+        return <button onClick={() => {
+            fetch(`http://localhost:8088/employees/${employeeObj.id}`, {
+                method: "DELETE"
+            })
+
+            fetch(`http://localhost:8088/users/${employeeObj.userId}`, {
+                method: "DELETE"
+            })
+            .then(() => getAllEmployees())
+
+        }} className="employee__fire">Fire Employee</button>
+    }
 
     return <>
 
@@ -34,6 +52,9 @@ export const EmployeeList = () => {
                                 <header>{employee.user.name}</header>
                                 <div>{employee.locations.address}</div>
                                 <div>Email: {employee.user.email}</div>
+                                {
+                                    fireButton(employee)
+                                }
                             </section>
                     }
                 )   

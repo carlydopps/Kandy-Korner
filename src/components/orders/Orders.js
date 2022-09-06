@@ -11,9 +11,7 @@ export const Orders = () => {
         () => {
             fetch(`http://localhost:8088/purchases?_expand=product`)
                 .then(res => res.json())
-                .then((purchasesArray) => {
-                    setOrders(purchasesArray)
-                })
+                .then(purchasesArray => setOrders(purchasesArray))
         },
         []
     )

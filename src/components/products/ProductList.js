@@ -23,9 +23,7 @@ export const ProductList = ({searchTermState}) => {
         () => {
             fetch(`http://localhost:8088/products?_sort=name&_expand=productTypes`)
                 .then(res => res.json())
-                .then((productArray) => {
-                    setProducts(productArray)
-                })
+                .then(productArray => setProducts(productArray))
         },
         [] // When this array is empty, you are observing initial component state
     )
