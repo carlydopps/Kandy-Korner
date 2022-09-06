@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
 import "./Products.css"
 
 export const ProductMatch = ({searchTermState}) => {
@@ -9,9 +8,15 @@ export const ProductMatch = ({searchTermState}) => {
 
     useEffect(
         () => {
-            const searchProducts = products.filter(product => {
-                return product.name.toLowerCase().startsWith(searchTermState.toLowerCase())
+            let searchProducts = null
+
+            if (searchTermState === "") {
+                searchProducts = []
+            } else {
+                searchProducts = products.filter(product => {
+                    return product.name.toLowerCase().startsWith(searchTermState.toLowerCase())
             })
+            }
             setFiltered(searchProducts)
         },
         [searchTermState]
